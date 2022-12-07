@@ -1,1 +1,1 @@
-# Template for Urbit
+# Hackathon
