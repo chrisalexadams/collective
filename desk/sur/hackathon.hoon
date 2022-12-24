@@ -3,24 +3,30 @@
 |%
 +$  id  @ud
 +$  zigs  @ux
++$  name  @t
++$  threshold  @ud
++$  ship  @p
++$  invitee  [=ship address]
 +$  member
   $:
-    patp=@p
+    =ship
     address  :: eth address
-    soul=[=id =zigs]
+    =zigs
   ==
 +$  members  (set member)
 +$  assets   (set id)
 +$  fund
   $:
     =id
-    name=@t
-    threshold=@ud
+    =name
+    =threshold
     =members
     =assets
     =zigs
+    status=?(%open %sealed %liquidated)
+    :: actions
   ==
-+$  groupid  [ship=@p name=@tas]
++$  resource  [ship=@p name=@tas]
 +$  coaction
   $%
     [%seal =id]
@@ -30,28 +36,25 @@
   ==
 ::  STATE
 :: +$  collective  [=resource fund:contract]
-+$  collective  [=groupid =fund]
++$  collective  [=resource =fund]
 +$  collectives  (set collective)
-:: +$  sigs        (set sig)
-:: +$  booths  ::  subscription to the ballots app
 ::
 
 +$  actions
   $%
   :: client actions
-    [%create invitees=(list @p)]
+    [%create =name =threshold invitees=(list invitee)]
     :: [%mint]
     [%collective-action =coaction]
     :: [%allocate]   :: use zigs to buy NFT, ERC20, etc.
     :: [%liquidate]  :: you can only liquidate if assets is empty
     :: [%configure]  
   :: helper actions
-    :: create ballot
     :: [%receive-sigs sigs =coaction]
   ==
 
-:: +$  subsriptions
-::   $%
-::     [%client]
-::   ==
++$  subsriptions
+  $%
+    [%client =collectives]
+  ==
 --

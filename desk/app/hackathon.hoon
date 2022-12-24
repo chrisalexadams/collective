@@ -1,10 +1,11 @@
-/-  hackathon, group-store, *group
+/-  hackathon, group-store, *group, groups
 /+  default-agent, dbug
+=,  ethereum-types
 |%
 +$  versioned-state
   $%  state-0
   ==
-+$  state-0  [%0 val=@ud =collectives:hackathon]
++$  state-0  [%0 =collectives:hackathon]
 +$  card  card:agent:gall
 --
 %-  agent:dbug
@@ -20,7 +21,7 @@
   ^-  (quip card _this)
   ~&  'on-init'
   :_  
-  this(val 42)
+  this
   ~
   :: :~  
   ::   [%pass /booths %agent [our.bowl %ballot] %watch [%booths ~]]
@@ -46,22 +47,62 @@
     =/  action  !<(actions:hackathon vase)
     ?-    -.action
       %create  
-      ~&  invitees.action
+      :: ~&  invitees.action
       =/  add-group=action:group-store
         :*
           %add-group
-          [~zod %testgroup]
+          [~zod %ballot-test-oldgroups]
           *open:policy
           %.n
         ==
-      ~&  add-group
+      =/  group-name  %testgroup6
+      =/  get-invitee  |=(a=@ -.a)
+      =/  new-group=create:groups
+        :*
+          group-name
+          'testgroup5'
+          'desc'
+          'image link'
+          'cover link'
+          [%shut [(silt (turn invitees.action |=(x=[@p address] -.x))) ~]]
+          ~
+          %.y
+        ==
+      =/  ballot-path  `path`[%rand (scot %p ~hapsyl-mosmed-pontus-fadpun) %groups group-name ~]
+
+      :: =/  booth-key  (spud (oust [0 1] `(list @ta)`ballot-path))
+      :: ~&  booth-key
+      :: =/  booth-key  (crip `tape`(oust [0 1] `(list @)`booth-key))
+      :: ~&  ballot-path
+      :: ~&  bowl
+      =/  context-booth
+          ^-  json
+          :-  %o  
+          %-  malt 
+          %-  limo
+          :~
+            ['booth' [%s %hello]]
+          ==
+
+      =/  new-booth
+        :-  %o 
+        %-  malt
+        %-  limo
+        :~
+          ['action' [%s %save-booth]]
+          ['data' [%s %save-booth]]
+          ['context' context-booth]
+        ==
+      ~&  `json`new-booth
+
       =/  new-collectives  collectives
       :_  this(collectives new-collectives)
       :~
-          :: TODO create group and invite the invitees
-          [%pass /groups %agent [our.bowl %group-store] %poke %group-action !>(add-group)]
-          :: Subscribe to the newly created group's ballot
-          [%pass /booths %agent [our.bowl %ballot] %watch [%booths ~]]
+          [%pass /groups %agent [our.bowl %groups] %poke %group-create !>(new-group)]
+          :: [%pass /balls %agent [our.bowl %ballot] %poke %json !>(new-booth)]
+          :: [%pass /groups %agent [our.bowl %group-store] %poke %group-action !>(add-group)]
+          :: [%pass /booths %agent [our.bowl %ballot] %watch [%booths ballot-path]]
+
       ==
       ::
       %collective-action
@@ -71,14 +112,12 @@
         :: TODO create proposal in ballot
         =/  json  `json`(pairs:enjs:format ~[['action' s+'ping2']])
         :_
-        this(val +(val))
+        this
         :~  
           [%pass /ballot %agent [our.bowl %ballot] %poke %json !>(json)]
         ==
         %liquidate
-        `this(val +(val))
-        :: %configure
-        :: `this(val +(val))
+        `this
       ==
     ::
     ==
