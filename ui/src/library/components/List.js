@@ -3,27 +3,22 @@ import Row from "./Row";
 import NewFund from "./NewFund";
 const FundList = (props) => {
 	const state = props.state;
-	const title = props.title;
-	const columns = props.columns;
-	const list = props.list;
-	console.log(state);
+	const title = props.data.title;
+	const columns = props.data.columns;
+	const list = props.data.list;
 	return (
 		<div>
-			{state.route === "main" && (
+			<div>
+				<div> {title} </div>
 				<div>
-					<div> {title} </div>
-					<div>
-						{columns.map((col) => {
-							return <span>{col}</span>;
-						})}
-					</div>
-					{list.map((items) => {
-						return <Row items={items} />;
+					{columns.map((col) => {
+						return <span>{col}</span>;
 					})}
 				</div>
-			)}
-			{state.route === "details" && <FundDetails state={state} />}
-			{state.route === "newfund" && <NewFund state={state} />}
+				{list.map((items) => {
+					return <Row items={items} />;
+				})}
+			</div>
 		</div>
 	);
 };

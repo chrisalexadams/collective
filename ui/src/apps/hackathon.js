@@ -2,15 +2,18 @@ import { createApp } from "../utils";
 import hackathon from "../library/logic/hackathon";
 import FundList from "../library/components/FundList";
 import Header from "../library/components/Header";
+import NewFund from "../library/components/NewFund";
+import FundDetails from "../library/components/FundDetails";
 
 const logic = (set) => {
 	return {
-		// base, newfund, details
+		// main, newfund, details
 		route: "main",
 		collectiveDetails: null,
 		newFund: {
 			name: '',
 			threshold: 50,
+			tmpMember: {ship: '', address: ''},
 			members: []
 		},
 		// newFund: {
@@ -30,11 +33,12 @@ const logic = (set) => {
 
 const Layout = (useStore) => {
 	const state = useStore((state) => state);
-	console.log(state);
 	return (
 		<div>
 			<Header state={state} />
-			<FundList state={state} />
+			{state.route === "main" && <FundList state={state}/>}
+			{state.route === "details" && <FundDetails state={state} />}
+			{state.route === "newfund" && <NewFund state={state} />}
 		</div>
 	);
 };
