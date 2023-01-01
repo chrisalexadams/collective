@@ -13,7 +13,7 @@ const logic = (set) => {
 		collectiveDetails: null,
 		newFund: {
 			name: "",
-			threshold: 50,
+			threshold: null,
 			tmpMember: { ship: "", address: "" },
 			members: [],
 		},
@@ -35,18 +35,16 @@ const logic = (set) => {
 const Layout = (useStore) => {
 	const state = useStore((state) => state);
 	return (
-			<Box sx={{
-				padding: 1,
-				paddingLeft: 5,
-				paddingRight: 5,
-			}}>
 		<div>
-			<Header state={state} />
-			{state.route === "main" && <FundList state={state} />}
-			{state.route === "details" && <FundDetails state={state} />}
-			{state.route === "newfund" && <NewFund state={state} />}
+			<div>
+				<Header state={state} />
+			<div class='mx-2 mt-9'>
+				{state.route === "main" && <FundList state={state} />}
+				{state.route === "details" && <FundDetails state={state} />}
+				{state.route === "newfund" && <NewFund state={state} />}
+			</div>
+			</div>
 		</div>
-			</Box>
 	);
 };
 

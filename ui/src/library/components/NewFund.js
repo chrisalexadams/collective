@@ -5,27 +5,28 @@ const FundDetails = (props) => {
 	const newFund = props.state.newFund;
 	const setNewFund = props.state.setNewFund;
 	const basicInfo = {
-		title: "",
+		title: "Basic Settings",
 		columns: [],
 		list: [
 			[
-				{ type: "text", content: 'Fund Name:' },
+				{ type: "text", content: 'Fund Name' },
 				{
 					type: "input",
+					placeholder: 'e.g. My Super Fund',
 					value: newFund.name,
 					onChange: (value) => setNewFund({ ...newFund, name: value }),
 				},
 			],
 			[
-				{ type: "text", content: 'Threshold:' },
+				{ type: "text", content: 'Threshold' },
 				{
 					type: "input",
 					inputType: "number",
+					placeholder: 'e.g. 50',
 					value: newFund.threshold,
 					onChange: (value) => setNewFund({ ...newFund, threshold: value }),
 				},
 			],
-			[],
 		],
 	};
 	const memberInput = {
@@ -33,15 +34,16 @@ const FundDetails = (props) => {
 		columns: [],
 		list: [
 			[
-				{ type: "text", content: 'Add member:' },
 				{
 					type: "input",
 					value: newFund.tmpMember.ship,
+					placeholder: 'ship (e.g. ~sampel-palnet)',
 					onChange: (value) => setNewFund({ ...newFund, tmpMember: {...newFund.tmpMember, ship: value }}),
 				},
 				{
 					type: "input",
 					value: newFund.tmpMember.address,
+					placeholder: 'address (e.g. 0x1234...)',
 					onChange: (value) => setNewFund({ ...newFund, tmpMember: {...newFund.tmpMember, address: value }}),
 				},
 				{
@@ -56,8 +58,8 @@ const FundDetails = (props) => {
 		],
 	};
 	const members = {
-		title: "",
-		columns: ['Ship', 'Address'
+		title: "New Members",
+		columns: ['Ship', 'Address', 'Actions'
 		],
 		list: newFund.members.map((member) => {
 			const items = [
@@ -91,11 +93,15 @@ const FundDetails = (props) => {
 	};
 	return (
 		<div>
-			<div>new fund</div>
 			<List data={basicInfo}/>
-			<List data={memberInput}/>
 			<List data={members}/>
-			<List data={create}/>
+			<List data={memberInput}/>
+			<button
+				class='text-blue-400 hover:text-blue-600 float-right m-9'
+				onClick = {() => {}}
+			>
+				Create
+			</button>
 		</div>
 	);
 };

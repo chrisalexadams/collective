@@ -26,7 +26,9 @@ const hackathon = (set) => {
 					],
 					assets: ["0x13579", "0x24680"],
 					zigs: 300,
-					status: 'open'
+					// open, sealed, liquidated
+					status: 'open',
+					actions: []
 				},
 			},
 			{
@@ -54,7 +56,8 @@ const hackathon = (set) => {
 					],
 					assets: ["0x369", "0x147"],
 					zigs: 400,
-					status: 'sealed'
+					status: 'sealed',
+					actions: []
 				},
 			},
 		],
