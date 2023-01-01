@@ -13,6 +13,7 @@ const FundList = (props) => {
 				{ type: "text", content: collective.fund.name },
 				{ type: "text", content: collective.fund.members.length },
 				{ type: "text", content: collective.fund.zigs },
+				{ type: "text", content: 'gjskglfd gdgdfgdrjgg grg ergeg eg ergekfjsdlg re r et ret er te         tertregrergjgr gergerger' },
 				{
 					type: "text",
 					content: collective.fund.members.filter(

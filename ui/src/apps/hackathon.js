@@ -4,6 +4,7 @@ import FundList from "../library/components/FundList";
 import Header from "../library/components/Header";
 import NewFund from "../library/components/NewFund";
 import FundDetails from "../library/components/FundDetails";
+import Box from "@mui/material/Box";
 
 const logic = (set) => {
 	return {
@@ -11,10 +12,10 @@ const logic = (set) => {
 		route: "main",
 		collectiveDetails: null,
 		newFund: {
-			name: '',
+			name: "",
 			threshold: 50,
-			tmpMember: {ship: '', address: ''},
-			members: []
+			tmpMember: { ship: "", address: "" },
+			members: [],
 		},
 		// newFund: {
 		// 	name: 'Family Investments',
@@ -34,12 +35,18 @@ const logic = (set) => {
 const Layout = (useStore) => {
 	const state = useStore((state) => state);
 	return (
+			<Box sx={{
+				padding: 1,
+				paddingLeft: 5,
+				paddingRight: 5,
+			}}>
 		<div>
 			<Header state={state} />
-			{state.route === "main" && <FundList state={state}/>}
+			{state.route === "main" && <FundList state={state} />}
 			{state.route === "details" && <FundDetails state={state} />}
 			{state.route === "newfund" && <NewFund state={state} />}
 		</div>
+			</Box>
 	);
 };
 

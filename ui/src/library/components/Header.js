@@ -1,4 +1,4 @@
-const Header = (props) => {
+const header = (props) => {
 	const state = props.state;
 	return (
 		<div>
@@ -10,4 +10,4 @@ const Header = (props) => {
 	);
 };
 
-export default Header;
+export default header;

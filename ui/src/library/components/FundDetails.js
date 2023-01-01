@@ -21,7 +21,7 @@ const FundDetails = (props) => {
 	};
 	console.log(collective);
 	const members = {
-		title: "",
+		title: "Members",
 		columns: ["Ship", "Address"],
 		list: collective.fund.members.map((member) => {
 			const items = [
