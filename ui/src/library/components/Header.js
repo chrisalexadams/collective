@@ -5,7 +5,9 @@ const header = (props) => {
 			{state.route !== "main" && (
 				<button onClick={() => state.setRoute("main")}> Back </button>
 			)}
-			<button onClick={() => state.setRoute("newfund")}>New Fund</button>
+			<button className="font-bold" onClick={() => state.setRoute("newfund")}>
+				New Fund
+			</button>
 		</div>
 	);
 };
