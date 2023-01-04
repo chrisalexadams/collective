@@ -1,0 +1,11 @@
+:~
+  title+'Uqbar Suite'
+  info+'The contract & app development, wallet, and block explorer suite from Uqbar'
+  color+0xf2.f3ef
+  version+[0 0 9]
+  website+'https://uqbar.network'
+  license+'MIT'
+  image+'https://hodzod-walrus.s3.us-east-2.amazonaws.com/hodzod-walrus/2022.9.12..23.15.34-R8S9LBS4.png'
+  base+'ziggurat'
+  glob-http+['https://personal-server.fra1.digitaloceanspaces.com/glob-0v4.5kfpo.p3245.d8jfo.5mggc.us9ip.glob' 0v4.5kfpo.p3245.d8jfo.5mggc.us9ip]
+==
