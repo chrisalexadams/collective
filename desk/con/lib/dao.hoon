@@ -13,12 +13,11 @@
   +$  state
     $:  members=(pset member)
         assets=(pset asset)
-        treasury=@ud
     ==
   ::
   +$  action
     $%  ::  Current actions
-        [%create threshold=@ud members=(pset address)]
+        [%create members=(pset address)]
         [%fund collective=id =address zigs=@ud]
         ::
         :: Implemented later as a complete multisig

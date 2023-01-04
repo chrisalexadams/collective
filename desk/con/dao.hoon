@@ -23,7 +23,7 @@
           this.context
           town.context
           0
-          %collective  [members.act ~ 0]
+          %collective  [members.act ~]
       ==
     `(result ~ item^~ ~ ~)
   =+  (need (scry-state collective.act))
