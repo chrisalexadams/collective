@@ -22,8 +22,9 @@
   =+  (need (scry-state collective.act))
   =/  collective  (husk state:sur - `this.context ~)
   ?-    -.act
-      %fund
-    `(result [%&^collective]^~ ~ ~ ~)
+      %fund2
+    :: `(result [%&^collective]^~ ~ ~ ~)
+    `(result ~ ~ ~ ~)
   ==
 ++  read
   |_  =path

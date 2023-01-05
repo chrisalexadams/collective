@@ -31,6 +31,7 @@ $:  contract=id
   $%
   :: client actions
     [%create =name from=address members=(list [=ship =address])]
+    [%fund =address]
   ==
 
 +$  subsriptions

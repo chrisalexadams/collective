@@ -1,4 +1,4 @@
-/-  sur=collective6, groups
+/-  sur=collective6, groups, zig-wallet
 /+  default-agent, dbug
 |%
 +$  versioned-state
@@ -7,8 +7,9 @@
 +$  state-0  [%0 =collectives:state:sur]
 +$  card  card:agent:gall
 ::
+:: ++  poke-contract
 ++  dao-contract-address
-  0x8c34.17c1.30ec.7dcb.0fb0.d731.21a9.09fb.aecc.cee0.86d7.5b2e.d4fc.7e94.a68f.9ae9
+  0xe431.1ed3.8396.fca1.fb4c.ca73.4a09.f2c5.79d6.380a.ac9a.1fcc.2d31.4ef7.22ad.be6a
 --
 %-  agent:dbug
 =|  state-0
@@ -29,6 +30,10 @@
   |=  [=mark =vase]
   ^-  (quip card _this)
   ?+    mark  (on-poke:def mark vase)
+      %wallet-update
+    =/  w  !<(wallet-update:zig-wallet vase)
+    ~&  w
+    [~ this]
       %noun
     =/  action  !<(actions:sur vase)
     ?-    -.action
@@ -47,11 +52,11 @@
       =/  new-transaction  
         :*
           %transaction
-          ~
+          [~ [%collective6 /dao-response]]
           from.action
           dao-contract-address
           0x0
-          [%noun [%create (turn members.action |=(x=[@p address:sur] +.x))]]
+          [%noun [%create name.action (turn members.action |=(x=[@p address:sur] +.x))]]
         ==
       ~&  new-transaction
       =/  create-group-poke  
@@ -69,12 +74,31 @@
       :~
           create-dao-poke
       ==
+        %fund
+      [~ this]
     ==
   ==
 ++  on-watch  on-watch:def
 ++  on-leave  on-leave:def
 ++  on-peek   on-peek:def
-++  on-agent  on-agent:def
+++  on-agent  
+  |=  [=wire =sign:agent:gall]
+  ^-  (quip card _this)
+  ~&  'poke happened!'
+  ~&  wire
+  ~&  sign
+  ~&  '-------------'
+  ?+    wire  (on-agent:def wire sign)
+      [%dao-response ~]
+    ?.  ?=(%poke-ack -.sign)
+      (on-agent:def wire sign)
+    ?~  p.sign
+      %-  (slog '%pokeit: poke succeeded!' ~)
+      `this
+    %-  (slog '%pokeit: poke failed!' ~)
+    `this
+  ::
+  ==
 ++  on-arvo   on-arvo:def
 ++  on-fail   on-fail:def
 --
