@@ -75,25 +75,12 @@
           0x0
           [%noun [%create name.action (turn members.action |=(x=[@p address:sur] +.x))]]
         ==
-      =/  sign-transaction  
-        :*
-          %submit
-          from.action
-          fund-contract-address
-          0x0
-          [%noun [%create name.action (turn members.action |=(x=[@p address:sur] +.x))]]
-        ==
       =/  create-group-poke
         :*
         %pass  /groups  %agent  [our.bowl %groups]  %poke 
         %group-create  !>(new-group)
         ==
       =/  create-fund-poke
-        :*
-        %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
-        %wallet-poke  !>(new-transaction)
-        ==
-      =/  create-fund-sign
         :*
         %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
         %wallet-poke  !>(new-transaction)
@@ -178,7 +165,7 @@
       =/  new-collective
         :*
           gall=[[~zod %hello] shipmap=~]
-          u=[name=name members=members assets=assets]
+          urbit=[name=name members=members assets=assets]
         ==
       =/  collectives  (~(put by collectives) fund-id new-collective)
       ~&  '=============='
