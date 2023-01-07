@@ -1,4 +1,4 @@
-import { poke, subscribe } from "../../utils";
+import { poke, subscribe, unit, dedup } from "../../utils";
 const _poke = poke("hackathon", "hackathon-action");
 
 const hackathon = (set) => {
@@ -27,8 +27,8 @@ const hackathon = (set) => {
 					assets: ["0x13579", "0x24680"],
 					zigs: 300,
 					// open, sealed, liquidated
-					status: 'open',
-					actions: []
+					status: "open",
+					actions: [],
 				},
 			},
 			{
@@ -56,14 +56,21 @@ const hackathon = (set) => {
 					],
 					assets: ["0x369", "0x147"],
 					zigs: 400,
-					status: 'sealed',
-					actions: []
+					status: "sealed",
+					actions: [],
 				},
 			},
 		],
 		// POKES
 		hackathon_pCreate: (json) => _poke(json),
 		// SUBSCRIPTIONS
+		hackathon_sClient: (handler) => {
+				console.log('sClient');
+				subscribe("collective", "/client", (client) => {
+				console.log('subscribed');
+				console.log(client);
+			});
+		},
 	};
 };
 

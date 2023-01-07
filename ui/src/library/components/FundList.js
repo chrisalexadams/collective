@@ -17,7 +17,7 @@ const FundList = (props) => {
 					type: "text",
 					content: collective.fund.members.filter(
 						(c) => c.ship === window.urbit.ship
-					)[0].zigs,
+					)[0]?.zigs,
 				},
 				{ type: "text", content: collective.fund.threshold },
 				{

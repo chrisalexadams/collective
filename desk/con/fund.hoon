@@ -1,5 +1,5 @@
 /+  *zig-sys-smart
-/=  lib  /con/lib/collective6
+/=  lib  /con/lib/fund
 =,  lib
 |_  =context
 ++  write
@@ -8,13 +8,14 @@
   ?:  ?=(%create -.act)
     ?>  ?=(^ members.act)
     ::
-    =/  =id  (hash-data this.context this.context town.context 0)
+    =/  salt  (crip (weld ~(rux at id.caller.context) (trip name.act)))
+    =/  =id  (hash-data this.context this.context town.context salt)
     =/  =item
       :*  %&  id
           this.context
           this.context
           town.context
-          0
+          salt
           %collective  [name.act members.act ~]
       ==
     `(result ~ item^~ ~ ~)
@@ -22,7 +23,7 @@
   =+  (need (scry-state collective.act))
   =/  collective  (husk state:sur - `this.context ~)
   ?-    -.act
-      %fund2
+      %fund
     :: `(result [%&^collective]^~ ~ ~ ~)
     `(result ~ ~ ~ ~)
   ==

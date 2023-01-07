@@ -29,9 +29,9 @@ function App() {
 	window.urbit = new Urbit(
 		"http://localhost:8080",
 		"",
-		"livtun-lapmud-talfyn-livsyt"
+		"sitnyl-nochep-halfex-satrec"
 	);
-	window.urbit.ship = "dinlug-pontun-pontus-fadpun";
+	window.urbit.ship = "dozpet-rocdun-pontus-fadpun";
 
   return (
     <div className="App">

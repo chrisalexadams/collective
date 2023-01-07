@@ -5,6 +5,7 @@ import Header from "../library/components/Header";
 import NewFund from "../library/components/NewFund";
 import FundDetails from "../library/components/FundDetails";
 import Box from "@mui/material/Box";
+import React, { useState, useEffect, Component } from "react";
 
 const logic = (set) => {
 	return {
@@ -34,6 +35,11 @@ const logic = (set) => {
 
 const Layout = (useStore) => {
 	const state = useStore((state) => state);
+	useEffect(() => {
+		state.hackathon_sClient();
+		console.log(state);
+	}, []);
+
 	return (
 		<div>
 			<div>

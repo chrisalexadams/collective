@@ -19,7 +19,7 @@
   +$  action
     $%  ::  Current actions
         [%create name=@t members=(pset address)]
-        [%fund2 collective=id =address =asset]
+        [%fund collective=id =address =asset]
         ::
         ::
         :: Implemented later as a complete multisig

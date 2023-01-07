@@ -12,29 +12,33 @@ $:  contract=id
     amount=@ud
     account=id
 ==
-+$  member   [=ship =address =shares]
++$  member   [=address =shares]
 +$  members  (set member)
 +$  assets   (set asset)
 +$  fund
   $:
-    =id
     =name
     =members
     =assets
   ==
-+$  collective  [=resource =fund]
-+$  collectives  (set collective)
++$  gall  [=resource shipmap=(map ship address)]
++$  uqbar  fund
+
++$  collective  [=gall =uqbar]
++$  collectives  (map fund-id=id collective)
 ::
 +$  state  collectives
 ::
-+$  actions
++$  action
   $%
   :: client actions
     [%create =name from=address members=(list [=ship =address])]
     [%fund =address]
+    ::
+    [%update fund-id=id =gall]
   ==
 
-+$  subsriptions
++$  update
   $%
     [%client =collectives]
   ==

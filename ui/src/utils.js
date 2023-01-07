@@ -31,3 +31,14 @@ export const createApp = (logicList, Layout) => {
 	const useStore = createStore(logicList);
 	return (props) => Layout(useStore);
 }
+
+export const unit = (str) => {
+	if (str === "~") {
+		return null;
+	}
+	return str;
+};
+
+export const dedup = (attr, arr) => {
+	return [...new Map(arr.map((a) => [a[attr], a])).values()];
+};
