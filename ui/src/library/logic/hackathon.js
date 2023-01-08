@@ -7,7 +7,7 @@ const hackathon = (set) => {
 		// hackathon_collectives: [],
 		hackathon_collectives: [
 			{
-				fundID: '',
+				fundID: '0x123',
 				resource: { ship: "dinlug-pontun-pontus-fadpun", name: "testgroup" },
 				fund: {
 					id: "",

@@ -54,28 +54,28 @@ const FundDetails = (props) => {
 				{
 					type: "input",
 					value: state.newAsset.contract,
-					placeholder: "ship (e.g. ~sampel-palnet)",
+					placeholder: "My Account",
 					onChange: (value) =>
 						state.setNewAsset({ ...state.newAsset, contract: value }),
 				},
 				{
 					type: "input",
 					value: state.newAsset.contract,
-					placeholder: "ship (e.g. ~sampel-palnet)",
+					placeholder: "Asset Account",
 					onChange: (value) =>
 						state.setNewAsset({ ...state.newAsset, contract: value }),
 				},
 				{
 					type: "input",
 					value: state.newAsset.contract,
-					placeholder: "ship (e.g. ~sampel-palnet)",
+					placeholder: "Asset Metadata",
 					onChange: (value) =>
 						state.setNewAsset({ ...state.newAsset, contract: value }),
 				},
 				{
 					type: "input",
 					value: state.newAsset.contract,
-					placeholder: "ship (e.g. ~sampel-palnet)",
+					placeholder: "Asset Amount",
 					onChange: (value) =>
 						state.setNewAsset({ ...state.newAsset, contract: value }),
 				},

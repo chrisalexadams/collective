@@ -20,7 +20,7 @@
     $%  ::  Current actions
         [%create name=@t members=(pset address)]
         :: from-account: getting money from this account
-        [%fund fund-id=id from-account=id asset-metadata=id amount=@ud]
+        [%fund fund-id=id my-wallet=id asset-account=id asset-metadata=id amount=@ud]
         ::
         ::
         :: Implemented later as a complete multisig

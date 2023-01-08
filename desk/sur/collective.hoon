@@ -33,7 +33,7 @@ $:  contract=id
   $%
   :: client actions
     [%create =name from=address members=(list [=ship =address])]
-    [%fund =address]
+    [%fund fund-id=id funder=id from-account=id asset-metadata=id amount=@ud]
     ::
     [%update fund-id=id =gall]
   ==

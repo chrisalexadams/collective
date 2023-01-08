@@ -54,7 +54,7 @@
       :^    %take
           this.context
         amount.act
-      from-account.act
+      asset-account.act
   ==
   ==
 ++  read
