@@ -26,10 +26,23 @@ const logic = (set) => {
 		// 		{ ship: "dev", address: "0x456" },
 		// 	],
 		// },
+		// newAsset: {
+		// 	contract: '0x123',
+		// 	metadata: '0x456',
+		// 	amount  : 400,
+		// 	from    : '0x789'
+		// },
+		newAsset: {
+			contract: '',
+			metadata: '',
+			amount  : null,
+			from    : ''
+		},
 		setCollectiveDetails: (collective) =>
 			set((state) => ({ collectiveDetails: collective, route: "details" })),
 		setRoute: (route) => set((state) => ({ route })),
 		setNewFund: (newFund) => set((state) => ({ newFund })),
+		setNewAsset: (newAsset) => set((state) => ({ newAsset })),
 	};
 };
 

@@ -7,27 +7,33 @@ const hackathon = (set) => {
 		// hackathon_collectives: [],
 		hackathon_collectives: [
 			{
+				fundID: '',
 				resource: { ship: "dinlug-pontun-pontus-fadpun", name: "testgroup" },
 				fund: {
 					id: "",
 					name: "testfundname",
-					threshold: 50,
 					members: [
 						{
 							ship: "dinlug-pontun-pontus-fadpun",
 							address: "0x123456789",
-							zigs: 100,
+							shares: 100,
 						},
 						{
 							ship: "hapsyl-mosmed-pontus-fadpun",
 							address: "0x987654321",
-							zigs: 200,
+							shares: 200,
 						},
 					],
-					assets: ["0x13579", "0x24680"],
-					zigs: 300,
+					assets: [
+						{
+							contract: '0x123',
+							metadata: '0x456',
+							contract: 13,
+							contract: '0x789',
+						}
+					],
 					// open, sealed, liquidated
-					status: "open",
+					// status: "open",
 					actions: [],
 				},
 			},
@@ -54,15 +60,24 @@ const hackathon = (set) => {
 							zigs: 200,
 						},
 					],
-					assets: ["0x369", "0x147"],
+					assets: [
+						{
+							contract: '0x123',
+							metadata: '0x456',
+							amount: 13,
+							account: '0x789',
+						}
+					],
 					zigs: 400,
-					status: "sealed",
-					actions: [],
+					// status: "sealed",
+					actions: [
+						{}
+					],
 				},
 			},
 		],
 		// POKES
-		hackathon_pCreate: (json) => _poke(json),
+		hackathon_pCreate: (json) => _poke('collective', 'collective-action', {'create': json}),
 		// SUBSCRIPTIONS
 		hackathon_sClient: (handler) => {
 				console.log('sClient');

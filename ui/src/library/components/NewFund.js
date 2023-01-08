@@ -2,6 +2,7 @@
 import Row from "./Row";
 import List from "./List";
 const FundDetails = (props) => {
+	const state = props.state;
 	const newFund = props.state.newFund;
 	const setNewFund = props.state.setNewFund;
 	const basicInfo = {
@@ -17,16 +18,7 @@ const FundDetails = (props) => {
 					onChange: (value) => setNewFund({ ...newFund, name: value }),
 				},
 			],
-			[
-				{ type: "text", content: 'Threshold' },
-				{
-					type: "input",
-					inputType: "number",
-					placeholder: 'e.g. 50',
-					value: newFund.threshold,
-					onChange: (value) => setNewFund({ ...newFund, threshold: value }),
-				},
-			],
+			
 		],
 	};
 	const memberInput = {
@@ -84,7 +76,7 @@ const FundDetails = (props) => {
 					type: "button",
 					onClick: (args) => 
 					{
-						setNewFund({...args[0], members: args[0].members.concat(args[1])})},
+						state.hackathon_pCreate({...args[0], members: args[0].members.concat(args[1])})},
 					onClickArg: [newFund, {ship: newFund.tmpMember.ship, address: newFund.tmpMember.address} ],
 					content: "Create",
 				}

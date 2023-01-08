@@ -2,24 +2,25 @@
 |%
 ++  sur
   |%
+  +$  account  id
   +$  asset
     $:  contract=id
         metadata=id
         amount=@ud
-        account=id
     ==
-  +$  member  [address shares=@ud]
+  +$  member  shares=@ud
   ::
   +$  state
     $:  name=@t
-        members=(pset member)
-        assets=(pset asset)
+        members=(pmap address member)
+        assets=(pmap account asset)
     ==
   
   +$  action
     $%  ::  Current actions
         [%create name=@t members=(pset address)]
-        [%fund collective=id =address =asset]
+        :: from-account: getting money from this account
+        [%fund fund-id=id from-account=id asset-metadata=id amount=@ud]
         ::
         ::
         :: Implemented later as a complete multisig

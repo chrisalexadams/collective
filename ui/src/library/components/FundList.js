@@ -6,7 +6,7 @@ const FundList = (props) => {
 	const state = props.state;
 	const fundList = {
 		title: 'List of Funds',
-		columns: ['Fund Name', 'Member Count', 'Total Zigs', 'My Zigs', 'Threshold', 'Actions'],
+		columns: ['Fund Name', 'Member Count', 'Total Zigs', 'My Zigs', 'Actions'],
 		list: 
 		state.hackathon_collectives.map((collective) => {
 			const items = [
@@ -19,7 +19,6 @@ const FundList = (props) => {
 						(c) => c.ship === window.urbit.ship
 					)[0]?.zigs,
 				},
-				{ type: "text", content: collective.fund.threshold },
 				{
 					type: "button",
 					onClick: state.setCollectiveDetails,
