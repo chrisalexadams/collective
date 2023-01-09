@@ -18,14 +18,20 @@
   ~&  jon
   %-  of
   :~  
-    :-  %create
+    :: :-  %create
+    :: %-  ot
+    :: :~
+    ::   name+so
+    ::   wallet+(se %ux)
+    ::   ship+(se %p)
+    ::   [%members (ar dejs-member)]
+    :: ==
+    :-  %update 
     %-  ot
     :~
-      name+so
-      wallet+(se %ux)
-      ship+(se %p)
-      [%members (ar dejs-member)]
+      fundid+(se %ux)
     ==
+
     :: ~[name+so [%members (ar (ot ~[ship+(se %p) address+(se %ux)]))]]
     :: :-  %fund
     :: %-  ot

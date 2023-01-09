@@ -1,7 +1,9 @@
 // top bar for creating new funds
 import Row from "./Row";
 import List from "./List";
+import { poke, subscribe, unit, dedup } from "../../utils";
 const FundDetails = (props) => {
+	poke('collective', 'collective-action', {update : { fundid: '0x123' }});
 	const state = props.state;
 	const newFund = props.state.newFund;
 	const setNewFund = props.state.setNewFund;
