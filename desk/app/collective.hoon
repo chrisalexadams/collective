@@ -54,64 +54,66 @@
       %noun
     =/  action  !<(action:sur vase)
     ?-    -.action
-        %create  
-      =/  new-group=create:groups
-        :*
-          name.action
-          name.action
-          'desc'
-          'image link'
-          'cover link'
-          [%shut [(silt (turn members.action |=(x=[address:sur @p] +.x))) ~]]
-          ~
-          %.y
-        ==
-      =/  new-transaction  
-        :*
-          %transaction
-          [~ [%collective /fund-response]]
-          wallet.action
-          fund-contract-address
-          0x0
-          [%noun [%create name.action wallet.action ship.action members.action]]
-        ==
-      =/  create-group-poke
-        :*
-        %pass  /groups  %agent  [our.bowl %groups]  %poke 
-        %group-create  !>(new-group)
-        ==
-      =/  create-fund-poke
-        :*
-        %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
-        %wallet-poke  !>(new-transaction)
-        ==
-      :_  this
-      :~
-          create-fund-poke
-          create-group-poke
-      ==
-        %fund
-      =/  new-transaction  
-        :*
-          %transaction
-          [~ [%collective /fund-response]]
-          wallet.action
-          fund-contract-address
-          0x0
-          [%noun [%fund wallet.action asset-account.action asset-metadata.action amount.action]]
-        ==
-      =/  create-fund-poke
-        :*
-        %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
-        %wallet-poke  !>(new-transaction)
-        ==
-      :_  this
-      :~
-          create-fund-poke
-      ==
+        :: %create  
+      :: =/  new-group=create:groups
+        :: :*
+        ::   name.action
+        ::   name.action
+        ::   'desc'
+        ::   'image link'
+        ::   'cover link'
+        ::   [%shut [(silt (turn members.action |=(x=[address:sur @p] +.x))) ~]]
+        ::   ~
+        ::   %.y
+        :: ==
+      :: =/  new-transaction  
+        :: :*
+        ::   %transaction
+        ::   [~ [%collective /fund-response]]
+        ::   wallet.action
+        ::   fund-contract-address
+        ::   0x0
+        ::   [%noun [%create name.action wallet.action ship.action members.action]]
+        :: ==
+      :: =/  create-group-poke
+        :: :*
+        :: %pass  /groups  %agent  [our.bowl %groups]  %poke 
+        :: %group-create  !>(new-group)
+        :: ==
+      :: =/  create-fund-poke
+        :: :*
+        :: %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
+        :: %wallet-poke  !>(new-transaction)
+        :: ==
+      :: :_  this
+      :: :~
+        ::   create-fund-poke
+        ::   create-group-poke
+      :: ==
+        :: %fund
+      :: =/  new-transaction  
+        :: :*
+        ::   %transaction
+        ::   [~ [%collective /fund-response]]
+        ::   wallet.action
+        ::   fund-contract-address
+        ::   0x0
+        ::   [%noun [%fund wallet.action asset-account.action asset-metadata.action amount.action]]
+        :: ==
+      :: =/  create-fund-poke
+        :: :*
+        :: %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
+        :: %wallet-poke  !>(new-transaction)
+        :: ==
+      :: :_  this
+      :: :~
+        ::   create-fund-poke
+      :: ==
         %update
-      =/  update  (update:hc fund-id.action %.n)
-      [~ this(state +.update)]
+        ~&  'update reached!!!!!!'
+      :: =/  update  (update:hc fund-id.action %.n)
+      :: [~ this(state +.update)]
+      [~ this]
     ==
   ==
 ++  on-watch

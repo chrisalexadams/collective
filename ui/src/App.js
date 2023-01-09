@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import {Text2} from './library/structures/basic';
-import Hackathon from './apps/hackathon';
+import React, { useState, useEffect, Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Text2 } from "./library/structures/basic";
+import Hackathon from "./apps/hackathon";
 import Urbit from "@urbit/http-api";
 
 // const inject = (component, state, actions) => {
@@ -25,19 +26,28 @@ import Urbit from "@urbit/http-api";
 
 // const appComponent = inject(component)();
 
-function App() {
-	window.urbit = new Urbit(
-		"http://localhost:8080",
-		"",
-		"sitnyl-nochep-halfex-satrec"
-	);
-	window.urbit.ship = "dozpet-rocdun-pontus-fadpun";
+class App extends Component {
+	constructor(props) {
+		super(props);
 
-  return (
-    <div className="App">
-			<Hackathon/>
-    </div>
-  );
+		window.urbit = new Urbit(
+			"http://localhost:8080",
+			"",
+			"livtun-lapmud-talfyn-livsyt"
+		);
+		window.urbit.ship = "dinlug-pontun-pontus-fadpun";
+
+		window.urbit.onOpen = () => this.setState({ conn: "ok" });
+		window.urbit.onRetry = () => this.setState({ conn: "try" });
+		window.urbit.onError = () => this.setState({ conn: "err" });
+	}
+	render() {
+		return (
+			<div className="App">
+				<Hackathon />
+			</div>
+		);
+	}
 }
 
 export default App;
