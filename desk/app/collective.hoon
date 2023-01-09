@@ -10,7 +10,7 @@
 ::
 :: ++  poke-contract
 ++  fund-contract-address
-  0x7a0.3cae.e686.b43d.bf15.03c0.3f7c.b30f.8064.a46a.6fe3.632a.084c.ccd7.1171.385e
+  0xb16a.8ce8.0f17.e347.adc2.d6ec.fe06.1bde.2398.7401.bf5a.1557.dcc0.6306.5655.d211
 --
 %-  agent:dbug
 =|  state-0

@@ -6,18 +6,17 @@ const FundList = (props) => {
 	const state = props.state;
 	const fundList = {
 		title: 'List of Funds',
-		columns: ['Fund Name', 'Member Count', 'Total Zigs', 'My Zigs', 'Actions'],
+		columns: ['Fund Name', 'Member Count', 'My Shares', 'Actions'],
 		list: 
 		state.hackathon_collectives.map((collective) => {
 			const items = [
-				{ type: "text", content: collective.fund.name },
-				{ type: "text", content: collective.fund.members.length },
-				{ type: "text", content: collective.fund.zigs },
+				{ type: "text", content: collective.name },
+				{ type: "text", content: collective.members.length },
 				{
 					type: "text",
-					content: collective.fund.members.filter(
-						(c) => c.ship === window.urbit.ship
-					)[0]?.zigs,
+					content: collective.members.filter(
+						(c) => c.ship === ('~' + window.urbit.ship)
+					)[0]?.shares,
 				},
 				{
 					type: "button",

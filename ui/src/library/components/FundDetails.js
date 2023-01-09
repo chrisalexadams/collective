@@ -11,12 +11,12 @@ const FundDetails = (props) => {
 				{
 					type: "text",
 					content:
-						"~" + collective.resource.ship + "/" + collective.resource.name,
+						"~" + collective.creator.ship + "/" + collective.name,
 				},
 			],
 			[
 				{ type: "text", content: "Name" },
-				{ type: "text", content: collective.fund.name },
+				{ type: "text", content: collective.name },
 			],
 			[
 				{ type: "text", content: "Fund ID" },
@@ -31,7 +31,7 @@ const FundDetails = (props) => {
 	const members = {
 		title: "Members",
 		columns: ["Ship", "Address", "Shares"],
-		list: collective.fund.members.map((member) => {
+		list: collective.members.map((member) => {
 			const items = [
 				{ type: "text", content: member.ship },
 				{ type: "text", content: member.address },
@@ -43,7 +43,7 @@ const FundDetails = (props) => {
 	const assets = {
 		title: "Assets",
 		columns: ["Contract", "Metadata", "Amount", "Account"],
-		list: collective.fund.assets.map((asset) => {
+		list: collective.assets.map((asset) => {
 			const items = [
 				{ type: "text", content: asset.contract },
 				{ type: "text", content: asset.metadata },

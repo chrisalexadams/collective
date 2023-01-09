@@ -14,15 +14,17 @@
   =,  dejs:format
   |=  jon=json
   ^-  action
-  ~&  jon
   %.  jon
+  ~&  jon
   %-  of
   :~  
     :-  %create
     %-  ot
     :~
       name+so
-      [%members (ar (ot ~[ship+(se %p) address+(se %ux)]))]
+      wallet+(se %ux)
+      ship+(se %p)
+      [%members (ar dejs-member)]
     ==
     :: ~[name+so [%members (ar (ot ~[ship+(se %p) address+(se %ux)]))]]
     :: :-  %fund
@@ -31,4 +33,10 @@
     :: [%fund 
     :: [%fund fund-id=id wallet=address asset-account=id asset-metadata=id amount=@ud]
   ==
+++  dejs-member  
+    %-  ot
+    :~
+      address+(se %ux)
+      ship+(se %p)
+    ==
 --
