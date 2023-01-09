@@ -18,6 +18,13 @@ const FundDetails = (props) => {
 				{ type: "text", content: "Name" },
 				{ type: "text", content: collective.fund.name },
 			],
+			[
+				{ type: "text", content: "Fund ID" },
+				{
+					type: "text",
+					content: collective.fundID,
+				},
+			],
 		],
 	};
 	console.log(collective);
@@ -53,40 +60,40 @@ const FundDetails = (props) => {
 			[
 				{
 					type: "input",
-					value: state.newAsset.contract,
+					value: state.newAsset.myWallet,
 					placeholder: "My Account",
 					onChange: (value) =>
-						state.setNewAsset({ ...state.newAsset, contract: value }),
+						state.setNewAsset({ ...state.newAsset, myWallet: value }),
 				},
 				{
 					type: "input",
-					value: state.newAsset.contract,
+					value: state.newAsset.assetAccount,
 					placeholder: "Asset Account",
 					onChange: (value) =>
-						state.setNewAsset({ ...state.newAsset, contract: value }),
+						state.setNewAsset({ ...state.newAsset, assetAccount: value }),
 				},
 				{
 					type: "input",
-					value: state.newAsset.contract,
+					value: state.newAsset.assetMetadata,
 					placeholder: "Asset Metadata",
 					onChange: (value) =>
-						state.setNewAsset({ ...state.newAsset, contract: value }),
+						state.setNewAsset({ ...state.newAsset, assetMetadata: value }),
 				},
 				{
 					type: "input",
-					value: state.newAsset.contract,
+					value: state.newAsset.amount,
 					placeholder: "Asset Amount",
 					onChange: (value) =>
-						state.setNewAsset({ ...state.newAsset, contract: value }),
+						state.setNewAsset({ ...state.newAsset, amount: value }),
 				},
 				{
 					type: "button",
-					onClick: (args) => 
-					{
-						state.setNewAsset({...args[0], members: args[0].members.concat(args[1])})},
+					onClick: (args) => {
+						state.hackathon_pFund(args[0]);
+					},
 					onClickArg: [state.newAsset],
 					content: "Send Funds",
-				}
+				},
 			],
 		],
 	};

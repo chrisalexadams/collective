@@ -10,11 +10,10 @@ import React, { useState, useEffect, Component } from "react";
 const logic = (set) => {
 	return {
 		// main, newfund, details
-		route: "main",
+		route: "newfund",
 		collectiveDetails: null,
 		newFund: {
 			name: "",
-			threshold: null,
 			tmpMember: { ship: "", address: "" },
 			members: [],
 		},
@@ -33,10 +32,10 @@ const logic = (set) => {
 		// 	from    : '0x789'
 		// },
 		newAsset: {
-			contract: '',
-			metadata: '',
+			myWallet: '',
+			assetAccount: '',
+			assetMetadata: '',
 			amount  : null,
-			from    : ''
 		},
 		setCollectiveDetails: (collective) =>
 			set((state) => ({ collectiveDetails: collective, route: "details" })),
@@ -50,7 +49,6 @@ const Layout = (useStore) => {
 	const state = useStore((state) => state);
 	useEffect(() => {
 		state.hackathon_sClient();
-		console.log(state);
 	}, []);
 
 	return (

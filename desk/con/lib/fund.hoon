@@ -3,24 +3,26 @@
 ++  sur
   |%
   +$  account  id
+  +$  ship  @p
   +$  asset
     $:  contract=id
         metadata=id
         amount=@ud
     ==
-  +$  member  shares=@ud
+  +$  member  [=ship shares=@ud]
   ::
   +$  state
     $:  name=@t
+        creator=[wallet=address =ship]
         members=(pmap address member)
         assets=(pmap account asset)
     ==
   
   +$  action
     $%  ::  Current actions
-        [%create name=@t members=(pset address)]
+        [%create name=@t wallet=address =ship members=(list [address ship])]
         :: from-account: getting money from this account
-        [%fund fund-id=id my-wallet=id asset-account=id asset-metadata=id amount=@ud]
+        [%fund fund-id=id wallet=id asset-account=id asset-metadata=id amount=@ud]
         ::
         ::
         :: Implemented later as a complete multisig

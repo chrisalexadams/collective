@@ -4,10 +4,15 @@ export const createPage = (currentRoute, pageRoute, component) => {
 }
 
 export const poke = R.curry((app, mark, json) => {
+	console.log('new poke=====');
+	console.log(app);
+	console.log(mark);
+	console.log(json);
+	console.log('=============');
 	window.urbit.poke({
-		app,
-		mark,
-		json,
+		app: app,
+		mark: mark,
+		json: json,
 		// onSuccess: () => {},
 		// onError: () => {},
 	});

@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
 const Span = (props) => {
-	console.log(props.content);
 	if (props.content === undefined) return <div />;
 	else
 		return (

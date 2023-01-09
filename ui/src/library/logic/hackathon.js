@@ -1,5 +1,5 @@
 import { poke, subscribe, unit, dedup } from "../../utils";
-const _poke = poke("hackathon", "hackathon-action");
+const _poke = poke("collective", "collective-action");
 
 const hackathon = (set) => {
 	return {
@@ -10,8 +10,7 @@ const hackathon = (set) => {
 				fundID: '0x123',
 				resource: { ship: "dinlug-pontun-pontus-fadpun", name: "testgroup" },
 				fund: {
-					id: "",
-					name: "testfundname",
+					name: "testgroup",
 					members: [
 						{
 							ship: "dinlug-pontun-pontus-fadpun",
@@ -26,10 +25,10 @@ const hackathon = (set) => {
 					],
 					assets: [
 						{
+							account: '0x789',
 							contract: '0x123',
 							metadata: '0x456',
-							contract: 13,
-							contract: '0x789',
+							amount: 13,
 						}
 					],
 					// open, sealed, liquidated
@@ -42,7 +41,6 @@ const hackathon = (set) => {
 				fund: {
 					id: "",
 					name: "testfundname2",
-					threshold: 50,
 					members: [
 						{
 							ship: "zod",
@@ -77,13 +75,15 @@ const hackathon = (set) => {
 			},
 		],
 		// POKES
-		hackathon_pCreate: (json) => _poke('collective', 'collective-action', {'create': json}),
+		hackathon_pCreate: (json) => _poke({'create': json}),
+		hackathon_pFund: (json) => _poke({'fund': json}),
 		// SUBSCRIPTIONS
 		hackathon_sClient: (handler) => {
-				console.log('sClient');
 				subscribe("collective", "/client", (client) => {
-				console.log('subscribed');
 				console.log(client);
+				set(state => ({
+					hackathon_collectives: client
+				}))
 			});
 		},
 	};

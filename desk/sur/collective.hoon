@@ -10,21 +10,18 @@
 $:  contract=id
     metadata=id
     amount=@ud
-    account=id
 ==
-+$  member   [=address =shares]
-+$  members  (set member)
-+$  assets   (set asset)
-+$  fund
++$  member   [ship shares]
++$  members  (map address member)
++$  assets   (map account=id asset)
++$  collective
   $:
     =name
+    creator=[wallet=address =ship]
     =members
     =assets
   ==
-+$  gall  [=resource shipmap=(map ship address)]
-+$  uqbar  fund
 
-+$  collective  [=gall =uqbar]
 +$  collectives  (map fund-id=id collective)
 ::
 +$  state  collectives
@@ -32,10 +29,10 @@ $:  contract=id
 +$  action
   $%
   :: client actions
-    [%create =name from=address members=(list [=ship =address])]
-    [%fund fund-id=id funder=id from-account=id asset-metadata=id amount=@ud]
+    [%create =name wallet=address =ship members=(list [=address =ship])]
+    [%fund fund-id=id wallet=address asset-account=id asset-metadata=id amount=@ud]
     ::
-    [%update fund-id=id =gall]
+    [%update fund-id=id]
   ==
 
 +$  update

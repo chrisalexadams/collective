@@ -10,7 +10,7 @@
 ::
 :: ++  poke-contract
 ++  fund-contract-address
-  0x8e8a.2e8b.0c38.e985.9433.1f73.494f.08fd.7b6e.a413.59a9.07e6.443d.9ab4.78e5.80a4
+  0x7a0.3cae.e686.b43d.bf15.03c0.3f7c.b30f.8064.a46a.6fe3.632a.084c.ccd7.1171.385e
 --
 %-  agent:dbug
 =|  state-0
@@ -47,8 +47,8 @@
     =/  modified  ~(tap by modified.output.finished-transaction)
     =/  our-fund  (skim modified |=(a=$_(-.modified) =(%collective +>+>+>+>-.a)))
     =/  fund-id  -<.our-fund
-    ::
-    =/  update  (update:hc fund-id [[[our.bowl 'name-of-fund'] ~] %.y])
+
+    =/  update  (update:hc fund-id %.y)
     [-.update this(state +.update)]
     ==
       %noun
@@ -62,7 +62,7 @@
           'desc'
           'image link'
           'cover link'
-          [%shut [(silt (turn members.action |=(x=[@p address:sur] -.x))) ~]]
+          [%shut [(silt (turn members.action |=(x=[address:sur @p] +.x))) ~]]
           ~
           %.y
         ==
@@ -70,10 +70,10 @@
         :*
           %transaction
           [~ [%collective /fund-response]]
-          from.action
+          wallet.action
           fund-contract-address
           0x0
-          [%noun [%create name.action (turn members.action |=(x=[@p address:sur] +.x))]]
+          [%noun [%create name.action wallet.action ship.action members.action]]
         ==
       =/  create-group-poke
         :*
@@ -85,15 +85,32 @@
         %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
         %wallet-poke  !>(new-transaction)
         ==
-      =/  new-collectives  collectives
-      :_  this(collectives new-collectives)
+      :_  this
+      :~
+          create-fund-poke
+          create-group-poke
+      ==
+        %fund
+      =/  new-transaction  
+        :*
+          %transaction
+          [~ [%collective /fund-response]]
+          wallet.action
+          fund-contract-address
+          0x0
+          [%noun [%fund wallet.action asset-account.action asset-metadata.action amount.action]]
+        ==
+      =/  create-fund-poke
+        :*
+        %pass  /fund-response  %agent  [our.bowl %uqbar]  %poke
+        %wallet-poke  !>(new-transaction)
+        ==
+      :_  this
       :~
           create-fund-poke
       ==
-        %fund
-      [~ this]
         %update
-      =/  update  (update:hc fund-id.action gall.action %.n)
+      =/  update  (update:hc fund-id.action %.n)
       [~ this(state +.update)]
     ==
   ==
@@ -141,37 +158,26 @@
   ==
 ++  extract-fund-id  !!
 ++  update
-  |=  [fund-id=id:smart =gall:sur broadcast=?]
+  |=  [fund-id=id:smart broadcast=?]
     =/  i-scry  /(scot %p our.bowl)/uqbar/(scot %da now.bowl)/indexer
       =/  =update:indexer
         .^  update:indexer  %gx
             %+  weld  i-scry
             ['newest' 'item' (scot %ux 0x0) (scot %ux fund-id) 'noun' ~]
         ==
-      ~&  update
-      ?@  update  !!
       ?>  ?=(%newest-item -.update)
       ?>  ?=(%& -.item.update)
-      ?>  ?=(@tas -.noun.p.item.update)
-      =/  noun  ((soft state:sur:fund) noun.p.item.update)
-      :: ?>  ?=(( members:sur) +<.noun.p.item.update)
-      :: ?>  ?=(fund:sur noun.p.item.update)
-      =/  name  'hello'
-      =/  members  ~
-      =/  assets  ~
-      =/  name  -.noun.p.item.update
-      :: =/  members  +<.noun.p.item.update
-      :: =/  assets  +>-.noun.p.item.update
+      =/  item  (husk:smart state:sur:fund item.update ~ ~)
       =/  new-collective
         :*
-          gall=[[~zod %hello] shipmap=~]
-          urbit=[name=name members=members assets=assets]
+          name.noun.item
+          creator.noun.item
+          members.noun.item
+          assets.noun.item
         ==
       =/  collectives  (~(put by collectives) fund-id new-collective)
       ~&  '=============='
-      ~&  noun
-      ~&  '=============='
-      ~&  noun.p.item.update
+      ~&  test
       ~&  fund-id
       ~&  new-collective
       ~&  collectives
@@ -179,11 +185,14 @@
       =/  client-gift  
         [%give %fact ~[/client] %collective-update !>(`update:sur`client+collectives)]
       ?:  broadcast
-        =/  broadcast-pokes
-        :*
-        %pass  /stuff  %agent  [our.bowl %collective]  %poke
-        %noun  !>([fund-id gall])
-        ==
-        [~[client-gift] state(collectives collectives)]
+        =/  passes
+          %+  turn  ~(tap by (~(del by members.noun.item) wallet.creator.noun.item))
+          |=  member=[@ux @p @ud]
+            :*
+            %pass  /stuff  %agent  [+<.member %collective]  %poke
+            %noun  !>(fund-id)
+            ==
+        :-  (welp passes ~[client-gift])
+        state(collectives collectives)
       [~[client-gift] state(collectives collectives)]
 --
