@@ -22,34 +22,32 @@ Members can then deposit `zig`s and receive 1:1 `shares` to `zig`s to represent 
 
 ![Alt text](images/canva3.png)
 
-
-
 ## Requirements
 
 - A fake `zod` (ship) with Urbit runtime > 1.12
 - Landscape and Groups 2
 - The Uqbar Suite
 - NodeJS > 14
+
 ---
 
 ### Local Desk development
 
 * reference [Urbit Developer Environment Setup](https://developers.urbit.org/guides/core/environment) for more info.
-
 1. create a fakeship outside of the cloned repo
-
+   
    ```sh
    ./urbit -F zod
    ```
 
 2. start the fakeship
-
+   
    ```sh
    ./urbit zod
    ```
 
 3. on the fakeship create a `%collective` desk
-
+   
    ```sh
    |mount %base
    |merge %collective our %base
@@ -57,20 +55,17 @@ Members can then deposit `zig`s and receive 1:1 `shares` to `zig`s to represent 
    ```
 
 4. start a watcher in a new terminal, to sync the novel code into the fakeship
-
+   
    ```sh
    watch rsync -zr --delete /location/of/collective/desk/* /path/to/fake/zod/collective
    ```
 
 5. install `%collective` on the fakeship
-
+   
    ```sh
    |commit %collective
    |install %collective
    ```
-
-
-
 
 ### UI
 
@@ -79,11 +74,12 @@ Clone this repo, switch to the `ui` directory and run:
 ```bash
 npm install
 ```
+
 then
+
 ```bash
 npm start
 ```
-
 
 ## Learn More
 
