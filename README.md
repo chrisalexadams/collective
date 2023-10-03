@@ -1,6 +1,6 @@
 # Collective
 
-![Alt text](images/Untitled%20design%20(1).png)
+![Alt text](images/Untitled design (3).svg)
 
 ## Community Finance
 
