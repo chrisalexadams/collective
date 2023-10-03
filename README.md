@@ -1,7 +1,5 @@
 # Collective
 
-![Alt text](images/Untitled design (3).svg)
-
 ## Community Finance
 
 ### Summary
